@@ -7,9 +7,7 @@ libncurses-dev apache2 ca-certificates && rm -rf /var/lib/apt/lists/*
 WORKDIR /tmp
 RUN wget \
 https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/bash/4.3-7ubuntu1/bash_4.3
-&& tar -xzf bash_4.3.orig.tar.gz && \
-cd bash-4.3 && ./configure --prefix=/usr --with-curses && \
-make && make install && cd / && rm -rf /tmp/bash*
+&& tar -xzf bash_4.3.orig.tar.gz && cd bash-4.3 && ./configure --prefix=/usr --with-curses make && make install && cd / && rm -rf /tmp/bash*
 RUN ln -sf /usr/bin/bash /bin/sh
 RUN a2enmod cgi
 RUN echo ’#!/bin/sh’ > /usr/lib/cgi-bin/vulnerable.sh && \
