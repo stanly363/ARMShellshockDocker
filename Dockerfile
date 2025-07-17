@@ -5,7 +5,7 @@ RUN apt-get install -y libcrypt-dev
 RUN apt-get install -y --no-install-recommends wget build-essential \
 libncurses-dev apache2 ca-certificates && rm -rf /var/lib/apt/lists/*
 WORKDIR /tmp
-RUN wget
+RUN wget \
 https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/bash/4.3-7ubuntu1/bash_4.3
 && tar -xzf bash_4.3.orig.tar.gz && \
 cd bash-4.3 && ./configure --prefix=/usr --with-curses && \
