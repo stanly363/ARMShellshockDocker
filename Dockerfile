@@ -1,6 +1,11 @@
+cat > Dockerfile << EOF
 FROM arm64v8/ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+
+# --- SOLUTION ---
+# Replace the default package repository with the main UK mirror for better stability.
+RUN sed -i 's|http://ports.ubuntu.com/ubuntu-ports/|http://gb.archive.ubuntu.com/ubuntu/|g' /etc/apt/sources.list
 
 # Clean, update, and install in a single command to prevent cache errors
 RUN rm -rf /var/lib/apt/lists/* && \
@@ -45,3 +50,4 @@ RUN chmod +x /usr/lib/cgi-bin/vulnerable.sh
 EXPOSE 80
 
 CMD ["apache2ctl", "-D", "FOREGROUND"]
+EOF
