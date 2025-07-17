@@ -1,4 +1,4 @@
-cat > Dockerfile << EOF
+
 FROM arm64v8/ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -50,4 +50,3 @@ RUN chmod +x /usr/lib/cgi-bin/vulnerable.sh
 EXPOSE 80
 
 CMD ["apache2ctl", "-D", "FOREGROUND"]
-EOF
